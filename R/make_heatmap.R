@@ -39,7 +39,9 @@ MakeHeatmap <- function(heatmap.data, graph.title, cluster, filenames) {
   n <- 11
   
   if (length(heatmap.data[,1]>=50)){
-    n = 20
+    n <- 20
+  } else if {
+    n <- 11
   }
   
   pdf(filenames$pdf, height=n, width=8.5)
