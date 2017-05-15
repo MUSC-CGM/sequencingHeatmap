@@ -38,7 +38,7 @@ MakeHeatmap <- function(heatmap.data, graph.title, cluster, filenames) {
   
   n <- 11
   
-  if (length(heatmap.data[,1]>=50{
+  if (length(heatmap.data[,1]>=50)){
     n = 20
   }
   
