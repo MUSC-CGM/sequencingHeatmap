@@ -36,15 +36,7 @@ MakeHeatmap <- function(heatmap.data, graph.title, cluster, filenames) {
   invisible(dev.off())               # close the EPS device
   print(paste0("PostScript of heatmap has been created at ./", filenames$eps))
   
-  n <- 11
-  
-  if (length(heatmap.data[,1]>=50)) {
-    n <- 20
-  } else if (length(heatmap.data[,1]<50)) {
-    n <- 11
-  }
-  
-  pdf(filenames$pdf, height=n, width=8.5)
+  pdf(filenames$pdf, height=11, width=8.5)
   gplots::heatmap.2(heatmap.data,
             hclustfun=function(x) hclust(x, method="ward.D2"),
             distfun=function(x) dist(x, method="euclidean"),
