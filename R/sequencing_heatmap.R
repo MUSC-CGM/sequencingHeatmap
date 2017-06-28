@@ -105,10 +105,7 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE, s
       if (typeof(preprocessed.data)=="logical") {
         break
       }
-      heatmap.ready <- 
-      
-      
-      ChangeCalculations(preprocessed.data, filenames, input.file, reglog)
+      heatmap.ready <- Calculations(preprocessed.data, filenames, input.file, reglog)
       if (typeof(heatmap.ready)=="logical") {
         break
       }
