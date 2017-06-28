@@ -4,7 +4,6 @@
 #' @param input.file The path to the sequencing output spreadsheet (.xlsx), i.e. sequencing="path/to/output.xlsx"
 #' @param sheet The sheet number in the spreadsheet with data, i.e sheet=1
 #' @param data.columns The column range of data to use, i.e. data.columns=5:31
-#' @param reglog if TRUE, use regularized log2 transformation, otherwise use basic log2 transformation
 #' @param subsets.directory The path to the directory which contains files of genes of interest, i.e.
 #' subsets.directory="path/to/inputs/"
 #' @param id.method The method of identifying each gene. It must be either id.method="symbol" or id.method="geneid"
@@ -63,7 +62,7 @@
 #' |       |---sequencingoutput-genelist1-top125-truncated.csv}
 #' @export
 
-SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE, subsets.directory, id.method, cutoff.p=0.4,
+SequencingHeatmap <- function(input.file, sheet, data.columns, subsets.directory, id.method, cutoff.p=0.4,
                          base.mean.count=15, top){
   
   if (missing(top)) {
@@ -91,7 +90,7 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE, s
         if (typeof(preprocessed.data)=="logical") { 
           break
         }
-        heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file, reglog)
+        heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file)
         if (typeof(heatmap.ready)=="logical") {
           break
         }
@@ -105,7 +104,7 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE, s
       if (typeof(preprocessed.data)=="logical") {
         break
       }
-      heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file, reglog)
+      heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file)
       if (typeof(heatmap.ready)=="logical") {
         break
       }
