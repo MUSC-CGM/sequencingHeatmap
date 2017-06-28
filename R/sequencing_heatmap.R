@@ -63,7 +63,7 @@
 #' |       |---sequencingoutput-genelist1-top125-truncated.csv}
 #' @export
 
-SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE,subsets.directory, id.method, cutoff.p=0.4,
+SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE, subsets.directory, id.method, cutoff.p=0.4,
                          base.mean.count=15, top){
   
   if (missing(top)) {
