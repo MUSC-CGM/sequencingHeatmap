@@ -91,7 +91,7 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE, s
         if (typeof(preprocessed.data)=="logical") { 
           break
         }
-        heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file)
+        heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file, reglog)
         if (typeof(heatmap.ready)=="logical") {
           break
         }
@@ -105,7 +105,10 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, reglog = FALSE, s
       if (typeof(preprocessed.data)=="logical") {
         break
       }
-      heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file)
+      heatmap.ready <- 
+      
+      
+      ChangeCalculations(preprocessed.data, filenames, input.file, reglog)
       if (typeof(heatmap.ready)=="logical") {
         break
       }
