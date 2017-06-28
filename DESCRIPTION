@@ -10,7 +10,8 @@ Depends:
     openxlsx,
     gplots,
     stringr,
-    MASS
+    MASS,
+    DESeq2
 License: GPL
 LazyData: true
 RoxygenNote: 5.0.1
