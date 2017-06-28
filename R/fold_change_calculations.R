@@ -1,11 +1,16 @@
-FoldChangeCalculations <- function(data.list, filenames, input.file) {
+FoldChangeCalculations <- function(data.list, filenames, input.file, reglog) {
   gene.data <- data.list$genes
   heatmap.values <- data.list$values
   base.means <- gene.data$baseMean
   symbol <- gene.data$Symbol
   gene.ID <- gene.data$gene.ID
-  # Convert to logBASE2 space and calculate difference of values and medians
-  log2space.diff <- log2(heatmap.values) - log2(base.means)
+  
+  if (reglog == TRUE){
+    log2space.diff <- DESeq2::rlog(heatmap.values, blind = TRUE) - log2(base.means)
+  } else {
+    # Convert to logBASE2 space and calculate difference of values and medians
+    log2space.diff <- log2(heatmap.values) - log2(base.means)
+  }
   
   # Apply fold-change to boost +/-
   fold.change <- ifelse(log2space.diff > 0, 2^log2space.diff, (-1)*2^(-log2space.diff))
