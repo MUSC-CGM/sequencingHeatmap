@@ -36,8 +36,8 @@ MakeHeatmap <- function(heatmap.data, graph.title, cluster, filenames) {
   invisible(dev.off())               # close the EPS device
   print(paste0("PostScript of heatmap has been created at ./", filenames$eps))
   
-  if (length(heatmap.data[,1])>=50){
-    n <- 11+((length(heatmap.data[,1])-50)*.125) # add an eigth of an inch to the pdf for every gene above 50 (prevents overlap)
+  if (nrow(heatmap.data)>=50){
+    n <- 11+((length(heatmap.data[,1])-50)*.15) # add an eigth of an inch to the pdf for every gene above 50 (prevents overlap)
   } else {
     n <- 11
   }
