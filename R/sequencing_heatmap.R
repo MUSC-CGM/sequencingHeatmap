@@ -11,6 +11,8 @@
 #' default is set to 15 but set to 0 to include all genes
 #' @param top (optional) The number of top genes to select, filtered by adjusted p-value. Can use
 #' multiple values for one run, i.e. top=100 or top=c(100,125,150)
+#' @param reglog Boolean value; TRUE for a regularized log2 transformation of the counts, FALSE for a normal log2 
+#' transformation of the counts.
 #' @examples
 #' \dontrun{
 #' 
@@ -63,7 +65,7 @@
 #' @export
 
 SequencingHeatmap <- function(input.file, sheet, data.columns, subsets.directory, id.method, cutoff.p=0.4,
-                         base.mean.count=15, top){
+                         base.mean.count=15, top, reglog = F){
   
   if (missing(top)) {
     top=NULL
@@ -80,6 +82,10 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, subsets.directory
   if (stringr::str_sub(subsets.directory, -1)=="/") {
     subsets.directory <- substr(subsets.directory, 1, nchar(subsets.directory)-1)
   }
+  
+  if (reglog == T) {
+    raw.data[,data.columns] <- DESeq2::rlog(data.matrix(raw.data[,data.columns]))
+  } 
 
   for (input.file in list.files(subsets.directory)){
     if (!is.null(top)) {
@@ -90,7 +96,7 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, subsets.directory
         if (typeof(preprocessed.data)=="logical") { 
           break
         }
-        heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file)
+        heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file, reglog)
         if (typeof(heatmap.ready)=="logical") {
           break
         }
@@ -104,7 +110,7 @@ SequencingHeatmap <- function(input.file, sheet, data.columns, subsets.directory
       if (typeof(preprocessed.data)=="logical") {
         break
       }
-      heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file)
+      heatmap.ready <- FoldChangeCalculations(preprocessed.data, filenames, input.file, reglog)
       if (typeof(heatmap.ready)=="logical") {
         break
       }

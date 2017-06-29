@@ -5,7 +5,7 @@
 \title{Sequencing Data Heatmap Creation}
 \usage{
 SequencingHeatmap(input.file, sheet, data.columns, subsets.directory, id.method,
-  cutoff.p = 0.4, base.mean.count = 15, top)
+  cutoff.p = 0.4, base.mean.count = 15, top, reglog = F)
 }
 \arguments{
 \item{input.file}{The path to the sequencing output spreadsheet (.xlsx), i.e. sequencing="path/to/output.xlsx"}
@@ -24,6 +24,9 @@ default is set to 15 but set to 0 to include all genes}
 
 \item{top}{(optional) The number of top genes to select, filtered by adjusted p-value. Can use
 multiple values for one run, i.e. top=100 or top=c(100,125,150)}
+
+\item{reglog}{Boolean value; TRUE for a regularized log2 transformation of the counts, FALSE for a normal log2 
+transformation of the counts.}
 }
 \description{
 This function allows you to create heatmaps from a sequencing output spreadsheet.
@@ -79,4 +82,3 @@ sequencingHeatmap(sequencing="sequencingoutput.xlsx", sheet=1, data.columns=5:14
 subsets.directory="experiment1", id.method="symbol", top=c(100,125,150))
 }
 }
-
