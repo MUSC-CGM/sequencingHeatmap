@@ -5,20 +5,20 @@ FoldChangeCalculations <- function(data.list, filenames, input.file, reglog) {
   symbol <- gene.data$Symbol
   gene.ID <- gene.data$gene.ID
   
-<<<<<<< HEAD
-  if (reglog==T){
-    # If user wants regularized counts, use DESeq's regularized log2 transformation
-    log2space.diff <- heatmap.values - log2(base.means)
-  } else {
-     # Convert to logBASE2 space and calculate difference of values and medians
-    log2space.diff <- log2(heatmap.values) - log2(base.means)
-  }
+#<<<<<<< HEAD
+#  if (reglog==T){
+#    # If user wants regularized counts, use DESeq's regularized log2 transformation
+#    log2space.diff <- heatmap.values - log2(base.means)
+#  } else {
+#     # Convert to logBASE2 space and calculate difference of values and medians
+#    log2space.diff <- log2(heatmap.values) - log2(base.means)
+#  }
   
-=======
+#=======
   # Convert to logBASE2 space and calculate difference of values and medians
   log2space.diff <- log2(heatmap.values) - log2(base.means)
  
->>>>>>> f7f4e54219a1dd30c02a01bd2530c7c68d7d9ada
+#>>>>>>> f7f4e54219a1dd30c02a01bd2530c7c68d7d9ada
   # Apply fold-change to boost +/-
   fold.change <- ifelse(log2space.diff > 0, 2^log2space.diff, (-1)*2^(-log2space.diff))
   
