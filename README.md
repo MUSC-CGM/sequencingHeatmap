@@ -14,7 +14,7 @@ Heatmaps are generated using Ward clustering and Euclidean distance via the `hea
 Install the R package using the following commands on the R console:
 ```
 install.packages("devtools")
-devtools::install_github("TomNash/sequencingHeatmap")
+devtools::install_github("MUSC-CGM/sequencingHeatmap")
 library(sequencingHeatmap)
 ```
 Set up a directory to keep your input files, one per subset of genes. The formatting of each file will be as follows: the first line
