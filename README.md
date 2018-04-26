@@ -41,4 +41,5 @@ formatted appropriately.
 ```
 sequencingHeatmap(sequencing="sequencingoutput.xlsx", sheet=1, columns=5:14, inputs="inputDirectory", method="geneid")
 ```
-
+# License
+ This project is licensed under the terms of the BSD 3-clause.
